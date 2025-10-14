@@ -1,4 +1,1 @@
-ablu 10
-dablu 20
-bablu 30
-tablu 40
+ahim 10 0123
