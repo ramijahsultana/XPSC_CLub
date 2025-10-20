@@ -12,30 +12,24 @@ int main()
     {
         cin >> v[i];
     }
-    
-    sort(v.begin(), v.end());
-    int i = 0;
+    vector<int> vis(101, 0);
     int cnt = 0;
-
     for(int val : v)
     {
-        if(i == x)
-        {
-            if(cnt==0)
-            {
-                cnt = 1;
-            }
-            break;
-        }
-        if(val != i)
-        {
-            cnt++;
-        }
-        i++;
+        vis[val] = 1;
     }
 
-    cout << cnt << "\n";
+    for(int i=0; i<x; i++)
+    {
+        if(vis[i] == 0)
+            cnt++;
+        
+    }
 
-
+    if(vis[x] == 1)
+        cnt++;
+    
+    cout << cnt << '\n';    
+    
     return 0;
 }
