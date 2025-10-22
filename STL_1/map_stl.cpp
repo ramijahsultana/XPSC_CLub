@@ -15,8 +15,12 @@ int main()
         cout << key << " -> " << value << "\n";
     }
 
-    auto it = mp.find(9);
+    auto it = mp.find(2);
     if(it == mp.end())
+        cout << "Value not found\n";
+    else
+        cout << it->first << " " << it->second << "\n";
+
         
 
     return 0;
