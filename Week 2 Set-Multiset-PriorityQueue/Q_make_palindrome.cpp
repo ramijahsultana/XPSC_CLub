@@ -34,7 +34,7 @@ int main() {
     }
 
     if (odd_index != -1) {
-        middle += string(freq[odd_index], 'A' + odd_index);
+        middle += string(freq[odd_index] % 2, 'A' + odd_index);
     }
 
     string right = left;
