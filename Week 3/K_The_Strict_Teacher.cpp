@@ -1,5 +1,6 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+#define ll long long
 int main()
 {
     ios::sync_with_stdio(false);
@@ -7,32 +8,61 @@ int main()
 
     int t;
     cin >> t;
-    while(t--)
+    while (t--)
     {
-        int n, m, q;
+        ll n;
+        int m, q;
         cin >> n >> m >> q;
-        int mn = INT_MAX;
-        vector<int> v(m);
-        vector<int> d(m);
-        for(int i=0; i<m; i++)
+
+        vector<ll> v(m);
+
+        for (int i = 0; i < m; i++)
         {
             cin >> v[i];
-            cin >> d[i];
         }
-        for(int i=0; i<q; i++)
+        sort(v.begin(), v.end());
+        while (q--)
         {
-    
-            int diff;
-            if(v[i] == d[i])
+            ll a;
+            cin >> a;
+
+            auto it = lower_bound(v.begin(), v.end(), a);
+            ll l = -1, r = -1;
+
+           
+            if (it != v.end())
             {
-                cout << "0\n";
+                r = *it;
+            }
+            if (it != v.begin())
+            {
+                it--;
+                l = *it;
+            }
+
+            ll left = LLONG_MAX;
+            ll right = LLONG_MAX;
+            
+            if(r != -1)
+            {
+                left = r - 1;
             }
             else
             {
-                diff = abs(v[i] - d[i]);
-                mn = min(mn, diff);
-                cout << mn << "\n";
+                left = n - 1;
             }
+        
+
+            if(l != -1)
+            {
+                right = n - l;
+            }
+            else
+            {
+                right = n;
+            }
+            ll ans = min(left, right);
+            cout << ans << "\n";
         }
     }
 
