@@ -29,6 +29,6 @@ int main()
     }
 
     cout << towers.size() << "\n";
-    
+
     return 0;
 }
