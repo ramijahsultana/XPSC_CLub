@@ -11,7 +11,20 @@ int main()
     cin >> n >> ex_sum;
 
     map<ll, ll> sum_freq;
-    int sum = 0;
+    sum_freq[0] = 1;
+    ll sum =0;
+    ll ans = 0;
+    for(int i=1; i<=n; i++)
+    {
+        int x;
+        cin >> x;
+         
+        sum += x;
+        ans += sum_freq[sum - ex_sum];
+        sum_freq[sum]++;
+    }
+    
+    cout << ans << "\n";
 
     return 0;
 }
