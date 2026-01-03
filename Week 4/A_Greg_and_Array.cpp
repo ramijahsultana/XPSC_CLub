@@ -1,57 +1,62 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-int main() {
+#define ll long long
+#define pb push_back
+int main()
+{
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int n, m, k;
     cin >> n >> m >> k;
 
-    vector<long long> a(n + 1);
-    for (int i = 1; i <= n; i++) {
+    vector<ll> a(n+1);
+    for(int i=1;i<=n; i++)
         cin >> a[i];
-    }
 
-    vector<int> l(m + 1), r(m + 1);
-    vector<long long> d(m + 1);
-    for (int i = 1; i <= m; i++) {
+    vector<int> l(m+1), r(m+1);
+    vector<ll> d(m+1);
+
+    for(int i=1; i<=m; i++)
+    {
         cin >> l[i] >> r[i] >> d[i];
     }
 
-    vector<long long> opCount(m + 2, 0);
 
-    for (int i = 0; i < k; i++) {
+    vector<ll> opCnt(m+2);
+    for(int i=1; i<=k; i++)
+    {
         int x, y;
         cin >> x >> y;
-        opCount[x] += 1;
-        opCount[y + 1] -= 1;
+
+        opCnt[x] += 1;
+        opCnt[y+1] -= 1;
     }
 
-   
-    for (int i = 1; i <= m; i++) {
-        opCount[i] += opCount[i - 1];
+    for(int i=1; i<=m; i++)
+    {
+        opCnt[i] += opCnt[i-1];
     }
 
-   
-    vector<long long> diff(n + 2, 0);
+    vector<ll> diff(n+2);
 
-    for (int i = 1; i <= m; i++) {
-        long long times = opCount[i];
-        if (times == 0) continue;
+    for(int i=1; i<=m; i++)
+    {
+        ll time = opCnt[i];
+        if(time == 0) continue;
 
-        diff[l[i]] += d[i] * times;
-        diff[r[i] + 1] -= d[i] * times;
+        diff[l[i]] += d[i]*time;
+        diff[r[i]+1] -= d[i]*time;
     }
 
-   
-    for (int i = 1; i <= n; i++) {
-        diff[i] += diff[i - 1];
+    for(int i=1; i<=n; i++)
+    {
+        diff[i] += diff[i-1];
         a[i] += diff[i];
     }
 
-
-    for (int i = 1; i <= n; i++) {
+    for(int i=1; i<=n; i++)
+    {
         cout << a[i] << " ";
     }
 
