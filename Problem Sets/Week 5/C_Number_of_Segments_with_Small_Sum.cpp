@@ -10,13 +10,13 @@ int main()
     int n;
     ll k;
     cin >> n >> k;
-    vector<ll> a(n+1);
-    for(int i=1; i<=n; i++)
+    vector<ll> a(n);
+    for(int i=0; i<n; i++)
         cin >> a[i];
 
     ll sum = 0, ans = 0;
     int l=0, r=0;
-    while()
+    while(r<n)
     {
         sum += a[r];
         if(sum <= k)
@@ -25,14 +25,19 @@ int main()
         }
         else
         {
-            while(sum <= k)
+            while(sum > k && l<=r)
             {
                 sum -= a[l];
                 l++;
             }
+            if(sum <= k)
+                ans += (r-l+1);
+
         }
         r++;
     }    
+
+    cout << ans << "\n";
 
     return 0;
 }
