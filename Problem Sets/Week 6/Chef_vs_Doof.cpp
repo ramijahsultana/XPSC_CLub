@@ -22,7 +22,7 @@ int main()
                 even = true;
             }
         }
-
+        //if any of number is even lcm become even
         if(even == false)
             cout << "YES\n";
         else
